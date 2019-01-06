@@ -1,1 +1,1 @@
-include ':app', ':jsonparsing-volly'
+include ':app', ':jsonparsing-volly', ':jsonparsing-retrofit'
