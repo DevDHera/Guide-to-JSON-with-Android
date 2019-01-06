@@ -47,26 +47,7 @@ public class MainActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                HashMap<String, String> hashMap = (HashMap<String, String>) lv.getAdapter().getItem(i);
-
-                new LovelyStandardDialog(MainActivity.this, LovelyStandardDialog.ButtonLayout.VERTICAL)
-                        .setTopColorRes(R.color.colorPrimary)
-                        .setButtonsColorRes(R.color.darkDeepOrange)
-                        .setIcon(R.drawable.ic_info_outline_white_36dp)
-                        .setTitle("Full Details")
-                        .setMessage(
-                                "ID: \t\t\t\t\t\t\t\t"+hashMap.get("id")+"\n"
-                                +"Name: \t\t\t\t"+hashMap.get("name")+"\n"
-                                +"Email: \t\t\t\t"+hashMap.get("email")+"\n"
-                                +"Address: \t\t"+hashMap.get("address")+"\n"
-                                +"Gender: \t\t\t"+hashMap.get("gender")+"\n"
-                                +"Mobile: \t\t\t"+hashMap.get("mobile")+"\n"
-                                +"Home: \t\t\t\t"+hashMap.get("home")+"\n"
-                                +"Office: \t\t\t\t"+hashMap.get("office")+"\n")
-
-                        .setPositiveButton(android.R.string.ok, null)
-                        .show();
+                displayFullContactDetails(i);
             }
         });
     }
@@ -183,5 +164,27 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void displayFullContactDetails(int position) {
+        HashMap<String, String> hashMap = (HashMap<String, String>) lv.getAdapter().getItem(position);
+
+        new LovelyStandardDialog(MainActivity.this, LovelyStandardDialog.ButtonLayout.VERTICAL)
+                .setTopColorRes(R.color.colorPrimary)
+                .setButtonsColorRes(R.color.darkDeepOrange)
+                .setIcon(R.drawable.ic_info_outline_white_36dp)
+                .setTitle("Full Details")
+                .setMessage(
+                        "ID: \t\t\t\t\t\t\t\t"+hashMap.get("id")+"\n"
+                                +"Name: \t\t\t\t"+hashMap.get("name")+"\n"
+                                +"Email: \t\t\t\t"+hashMap.get("email")+"\n"
+                                +"Address: \t\t"+hashMap.get("address")+"\n"
+                                +"Gender: \t\t\t"+hashMap.get("gender")+"\n"
+                                +"Mobile: \t\t\t"+hashMap.get("mobile")+"\n"
+                                +"Home: \t\t\t\t"+hashMap.get("home")+"\n"
+                                +"Office: \t\t\t\t"+hashMap.get("office")+"\n")
+
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
     }
 }
